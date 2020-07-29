@@ -1,48 +1,33 @@
+//config
 require('./config/config')
 
+//packets
 const express = require('express')
-const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
+//inicialize express
 const app = express()
 
-// parse application/x-www-form-urlencoded
+//Middleware
+const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
 app.use(bodyParser.json())
 
-app.get('/usuario', function(req, res) {
-    res.json('get Usuario')
-})
+//Import routes
+app.use(require('./routes/usuario'))
 
-app.post('/usuario', function(req, res) {
-    let body = req.body;
+//db connect (config in config/config.js)
+mongoose.connect(process.env.URL_DB, {
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    },
+    (err, res) => {
+        if (err) throw err;
+        console.log('Base de datos corriendo en el puerto 27017');
+    });
 
-    if (body.nombre === undefined) {
-        res.status(400).json({
-            ok: false,
-            mensaje: 'El nombre es necesario'
-        });
-    } else {
-        res.json({
-            persona: body
-        })
-    }
-})
-
-app.put('/usuario/:id', function(req, res) {
-
-    let id = req.params.id;
-
-    res.json({
-        id
-    })
-})
-
-app.delete('/usuario', function(req, res) {
-    res.json('delete Usuario')
-})
-
+//listen port
 app.listen(process.env.PORT, () => {
     console.log('Escuchando puerto: ', process.env.PORT);
 })
