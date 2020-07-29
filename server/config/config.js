@@ -22,5 +22,4 @@ if (process.env.NODE_ENV === 'development') {
     urlDB = process.env.MONGO_URI;
 }
 
-// Nos creamos esta variable de entorno
 process.env.URL_DB = urlDB;
