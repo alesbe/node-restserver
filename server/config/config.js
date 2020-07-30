@@ -10,6 +10,18 @@ process.env.PORT = process.env.PORT || 3000;
 // NODE_ENV: Variable de entorno que usa heroku. Si existe, es que estamos en producción, si no, estamos en desarrollo
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+// *****************************
+// *   VENCIMIENTO DEL TOKEN   *
+// *****************************
+
+process.env.CADUCIDAD_TOKEN = '30d';
+
+// ***************************************
+// *   SEED DE AUTENTICACIÓN DEL TOKEN   *
+// ***************************************
+
+process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo'
+
 // ****************
 // *   DATABASE   *
 // ****************

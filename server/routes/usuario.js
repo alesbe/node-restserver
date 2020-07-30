@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const _ = require('underscore')
 
 const Usuario = require('../models/usuario')
+const { verificaToken, verificaAdmin_Rol } = require('../middlewares/autenticacion')
 
 const app = express()
 
@@ -10,8 +11,11 @@ const app = express()
 hasta 5 usuarios mas, si no pasamos nada en la query, será desde el usuario 0.
 Con find buscamos todos los usuarios, porque no le pasamos ningun parametro de busqueda
 skip = desde, limit = hasta, para entenderlo mejor.
+
+Pasamos nuestro middleware para verificar el token, y que un usuario que no haya
+hecho login pueda acceder a esta ruta.
 */
-app.get('/usuario', (req, res) => {
+app.get('/usuario', verificaToken, (req, res) => {
     // Tomar los usuarios desde la query, si no hay, desde 0
     let desde = req.query.desde || 0;
     desde = Number(desde)
@@ -51,7 +55,7 @@ usuario.
 Nota: El nombre del documento se crea con el nombre del modelo en
 lowercase y con s al final, ejemplo Dog => dogs
 */
-app.post('/usuario', (req, res) => {
+app.post('/usuario', [verificaToken, verificaAdmin_Rol], (req, res) => {
     let body = req.body;
 
     // Creamos un nuevo objeto con el modelo Usuario
@@ -84,7 +88,7 @@ y con s (usuarios), y actualiza el contenido con la información pasada en el
 body. El método pick limita el cambio a nombre, email, img, y estado, para que
 no se pueda cambiar ni el campo google, password, y rol
 */
-app.put('/usuario/:id', (req, res) => {
+app.put('/usuario/:id', [verificaToken, verificaAdmin_Rol], (req, res) => {
     let id = req.params.id;
 
     //Selecciono los parametros del body que si se pueden actualizar, excluyendo google, password y role
@@ -113,7 +117,7 @@ le cambia el estado. Por ejemplo, en un almacen, igual nos interesa guardar los 
 
 Nota: El código comentado es como se haría eliminando directamente documento
 */
-app.delete('/usuario/:id', (req, res) => {
+app.delete('/usuario/:id', [verificaToken, verificaAdmin_Rol], (req, res) => {
     let id = req.params.id;
 
     /*
