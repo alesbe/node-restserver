@@ -47,6 +47,25 @@ app.get('/usuario', verificaToken, (req, res) => {
         });
 })
 
+// Mostrar un usuario por ID
+app.get('/usuario/:id', verificaToken, (req, res) => {
+    let id = req.params.id;
+
+    Usuario.findById(id, (err, usuario) => {
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err
+            });
+        }
+
+        res.json({
+            ok: true,
+            usuario
+        })
+    })
+})
+
 /*Crea un nuevo usuario, con los parametros del body,
 los pone en el modelo, y los guarda en la db con save,
 y devuelve una respuesta json si ha ido bien con el nuevo
