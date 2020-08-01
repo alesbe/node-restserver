@@ -10,7 +10,7 @@ const Usuario = require('../models/usuario')
 
 const app = express()
 
-app.get('/login', (req, res) => {
+app.post('/login', (req, res) => {
     let body = req.body;
 
     // Comprobamos si el email existe
