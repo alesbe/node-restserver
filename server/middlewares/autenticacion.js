@@ -23,6 +23,28 @@ let verificaToken = (req, res, next) => {
 }
 
 // ***************************
+// *   VERIFICAR TOKEN IMG   *
+// ***************************
+
+let verificaTokenImg = (req, res, next) => {
+    let token = req.query.token;
+
+    jwt.verify(token, process.env.SEED, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({
+                ok: false,
+                err: {
+                    message: 'Token no valido'
+                }
+            })
+        }
+
+        req.usuario = decoded.usuario;
+        next();
+    })
+}
+
+// ***************************
 // *   VERIFICAR ADMIN_ROL   *
 // ***************************
 
@@ -44,5 +66,6 @@ let verificaAdmin_Rol = (req, res, next) => {
 
 module.exports = {
     verificaToken,
+    verificaTokenImg,
     verificaAdmin_Rol
 }
