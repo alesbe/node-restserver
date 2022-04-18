@@ -1,50 +1,50 @@
-# REST API: Cafetería con NodeJS
+# REST API: Cafeteria with NodeJS
 
-Servidor REST creado con [NodeJS](https://nodejs.org/es/) y [MongoDB](https://www.mongodb.com/es).
+REST server made with [NodeJS](https://nodejs.org/es/) and [MongoDB](https://www.mongodb.com/es).
 
-**Documentación e información de uso:** [Postman docs](https://web.postman.co/collections/7727126-fa15d799-b897-48d5-b197-95121ede80dc?version=latest&workspace=302ec022-de25-4482-842c-23cd7f984d58)
+**API documentation and info:** [Postman docs](https://web.postman.co/collections/7727126-fa15d799-b897-48d5-b197-95121ede80dc?version=latest&workspace=302ec022-de25-4482-842c-23cd7f984d58)
 
 ![example](https://i.imgur.com/6lYECCD.png)
 
-REST API creada como proyecto de un curso de NodeJS, orientado a una posible implementación en un Café o Restaurante. Gestión de usuarios, categorías y productos con peticiones GET, POST, PUT, DELETE y PATCH y autenticación por token.
+REST API created as a project to simulate a cafeteria or restaurant. User management, categories, requests GET, POST, PUT, DELETE and PATCH and token user autentication.
 
-## NPM packages usados
+## NPM packages used
 
-- [**bcrypt**](https://www.npmjs.com/package/bcrypt): Encriptación de contraseñas.
-- [**body-parser**](https://www.npmjs.com/package/body-parser): Tomar los parametros de las peticiones.
-- [**express**](https://www.npmjs.com/package/express): Servidor HTTP.
-- [**express-fileupload**](https://www.npmjs.com/package/express-fileupload): Subida de archivos.
-- [**google-auth-library**](https://www.npmjs.com/package/google-auth-library): Autenticación por google.
-- [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken): Autenticación por token.
-- [**mongoose**](https://www.npmjs.com/package/mongoose): Conexión con MongoDB.
-- [**mongoose-unique-validator**](https://www.npmjs.com/package/mongoose-unique-validator): Plugin para mongoose de validación.
-- [**underscore**](https://www.npmjs.com/package/underscore): Funciones adicionales de JavaScript.
+- [**bcrypt**](https://www.npmjs.com/package/bcrypt): Password encryptation
+- [**body-parser**](https://www.npmjs.com/package/body-parser): Take request parameters
+- [**express**](https://www.npmjs.com/package/express): HTTP server
+- [**express-fileupload**](https://www.npmjs.com/package/express-fileupload): Files upload
+- [**google-auth-library**](https://www.npmjs.com/package/google-auth-library): Google authentication
+- [**jsonwebtoken**](https://www.npmjs.com/package/jsonwebtoken): Token authentication
+- [**mongoose**](https://www.npmjs.com/package/mongoose): MongoDB connection
+- [**mongoose-unique-validator**](https://www.npmjs.com/package/mongoose-unique-validator): MongoDB validation
+- [**underscore**](https://www.npmjs.com/package/underscore): Additional JS functionality
 
-## Caracteristicas
+## Features
 
-- Características generales
-  - Operaciones [CRUD](https://es.wikipedia.org/wiki/CRUD) para usuarios, categorías y productos.
-  - Sistema de roles para cada usuario
-  - Autenticación por [JWT](https://jwt.io/) y [Google OAuth](https://cloud.google.com/nodejs/getting-started/authenticate-users)
-  - Categorías para cada producto
-  - Subida de imágenes
+- General features
+  - [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) for users, categories and products
+  - Role system for users
+  - [JWT](https://jwt.io/) token authentication and [Google OAuth](https://cloud.google.com/nodejs/getting-started/authenticate-users)
+  - Categories for each product
+  - Image upload
 
-- Seguridad
-  - Encriptación de contraseñas con [bcrypt](https://www.npmjs.com/package/bcrypt).
-  - Protección de URLS con tokens.
-  - Guardado de imágenes en carpetas no publicas.
-  - Sistema de roles de usuario y administrador.
-  - Sistema de validación con [mongoose-unique-validator](https://www.npmjs.com/package/mongoose-unique-validator) para validar el contenido que se introduce en la base de datos
-  - SEEDs de token guardadas en variables de entorno en el servidor.
-  - Protección de contraseñas para que no se muestren en las respuestas JSON.
-  - Categoría o producto ligada al nombre del usuario que la ha creado.
-  - Validación de extensión de archivo.
-  - Captura de errores devolviendo un status HTTP.
-  - URL de la imagen protegida con token.
+- Security
+  - Password encryptation with [bcrypt](https://www.npmjs.com/package/bcrypt)
+  - URL protection with tokens
+  - Images saved in non-public folders
+  - Admin and users role system
+  - Validation system with [mongoose-unique-validator](https://www.npmjs.com/package/mongoose-unique-validator)
+  - Token seeds saved in server side
+  - Password protection to prevent being showed in clear text on JSON
+  - Category or product linked to the user that created it
+  - File extension validation
+  - Error capture returning an HTTP code
+  - Image URL protected with token
 
-## Instalación
-- 1.- Descargar la [última versión del servidor](https://github.com/Nexobeta28/node-restserver/releases)
-- 2.- Configurar las [variables de entorno](https://github.com/Nexobeta28/node-restserver/blob/master/server/config/config.js) en el servidor.
-- 3.- Configurar el [Google Client ID](https://cloud.google.com/nodejs/getting-started/authenticate-users) para usar la autenticación por Google.
-- 4.- Descargar las dependencias con `npm install`.
-- 5.- Iniciar el servidor con `npm start` o `node server/server`.
+## Install
+- 1.- Download the [last version of the server](https://github.com/Nexobeta28/node-restserver/releases)
+- 2.- Configure [enviorment variables](https://github.com/Nexobeta28/node-restserver/blob/master/server/config/config.js) in the server.
+- 3.- Configure [Google Client ID](https://cloud.google.com/nodejs/getting-started/authenticate-users) for google authentication.
+- 4.- Download dependencies with `npm install`.
+- 5.- Start server with `npm start` or `node server/server`.
