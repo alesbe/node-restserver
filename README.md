@@ -42,9 +42,13 @@ REST API created as a project to simulate a cafeteria or restaurant. User manage
   - Error capture returning an HTTP code
   - Image URL protected with token
 
-## Install
-- 1.- Download the [last version of the server](https://github.com/Nexobeta28/node-restserver/releases)
-- 2.- Configure [enviorment variables](https://github.com/Nexobeta28/node-restserver/blob/master/server/config/config.js) in the server.
-- 3.- Configure [Google Client ID](https://cloud.google.com/nodejs/getting-started/authenticate-users) for google authentication.
-- 4.- Download dependencies with `npm install`.
-- 5.- Start server with `npm start` or `node server/server`.
+## Install 🐳
+I bundled the project in 2 docker containers, however **this project was made with learning purposes and is not maintained, do not use it in a real enviorment!**
+
+### Download the source code
+Git clone the project or download the las version from [releases](https://github.com/alesbe/node-restserver/releases)
+
+### Run the containers
+Cd into the project root folder, and do `docker-compose up`, this will pull the docker images and start them.
+
+By default, the backend server is running on port `8000`, and mongodb in port `27017`
