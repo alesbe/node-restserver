@@ -46,7 +46,7 @@ REST API created as a project to simulate a cafeteria or restaurant. User manage
 I bundled the project in 2 docker containers, however **this project was made with learning purposes and is not maintained, do not use it in a real enviorment!**
 
 ### Download the source code
-Git clone the project or download the las version from [releases](https://github.com/alesbe/node-restserver/releases)
+Git clone the project or download the last version from [releases](https://github.com/alesbe/node-restserver/releases)
 
 ### Run the containers
 Cd into the project root folder, and do `docker-compose up`, this will pull the docker images and start them.
