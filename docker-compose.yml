@@ -1,18 +1,15 @@
 version: "3"
 services:
-        rest-server:
+        backend:
                 container_name: node-restserver
-                image: alesbe/node-restserver:latest
                 restart: always
                 build: .
                 ports:
                         - "8000:8000"
-                links:
-                        - mongodb
         mongodb:
                 container_name: mongodb
                 image: mongo
                 volumes:
-                        - ./data:/data/db
+                        - ./restserver-data:/data/db
                 ports:
                         - '27017:27017'
